@@ -1,0 +1,24 @@
+Ansible plugins and modules, they serve different purposes and are not necessarily compiled Python packages.
+
+Modules
+Purpose: Ansible modules are the units of work that perform specific tasks in an Ansible playbook. They are the building blocks for system automation tasks.
+Execution: When you run a playbook, Ansible sends the modules to the target machines and executes them there.
+Written in: Most Ansible modules are written in Python, but they can be written in other languages as well, such as Bash, PowerShell, or any language that can be executed on the target system.
+Examples: file, service, copy, yum, apt, etc.
+Plugins
+Purpose: Ansible plugins augment the core functionality of Ansible. They can control how tasks are executed, transform data, manage inventory, and perform other auxiliary functions.
+Types: There are various types of plugins in Ansible, including:
+Action Plugins: Control the actions taken by modules.
+Callback Plugins: Respond to Ansible events for logging or notification.
+Connection Plugins: Manage communication with the target systems.
+Lookup Plugins: Fetch data from external sources.
+Filter Plugins: Transform data within templates.
+Test Plugins: Allow custom Jinja2 tests.
+Inventory Plugins: Manage dynamic inventory sources.
+Written in: Plugins are typically written in Python. They extend Ansible's capabilities and are loaded by the Ansible runtime environment.
+Examples: ssh (connection plugin), json_query (filter plugin), aws_ec2 (inventory plugin), etc.
+Compilation
+Neither Ansible modules nor plugins are typically compiled Python packages. They are usually plain Python scripts or text files that Ansible interprets at runtime. However, some modules may use compiled libraries or binaries as dependencies to perform specific tasks, but the modules themselves are not compiled.
+To summarize:
+
+Ansible Modules: Perform tasks, written in Python or other languages, executed on target machines.
