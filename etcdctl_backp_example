@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Define the backup directory and file name
+BACKUP_DIR="/path/to/backup/destination"
+BACKUP_FILE="$BACKUP_DIR/etcd-snapshot-$(date +%Y%m%d%H%M%S).db"
+
+# Run the etcd backup command
+ETCDCTL_API=3 etcdctl snapshot save $BACKUP_FILE \
+  --endpoints=https://127.0.0.1:2379 \
+  --cacert=/etc/kubernetes/pki/etcd/ca.crt \
+  --cert=/etc/kubernetes/pki/etcd/healthcheck-client.crt \
+  --key=/etc/kubernetes/pki/etcd/healthcheck-client.key
+
+# Optionally, you can add logic to clean up old backups
